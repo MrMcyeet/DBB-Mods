@@ -1,5 +1,5 @@
 module.exports = {
-    name: "Send Message with text",
+    name: "Better Send Message with text",
 
     description: "Sends a message with built in text block.",
 
@@ -81,6 +81,12 @@ module.exports = {
             "types": ["action"]
         },
         {
+            "id": "action2",
+            "name": "Action [Error]",
+            "description": "Type: Action\n\nDescription: If something goes wrong, this fires",
+            "types": ["action"]
+        },
+        {
             "id": "message",
             "name": "Message",
             "description": "Type: Object, List\n\nDescription: The message obtained. If \"Split Message\" is enabled, this will return a list containing all message objects instead of a single one.",
@@ -110,6 +116,7 @@ module.exports = {
         }).then(msg => {
             this.StoreOutputValue(split_message ? (Array.isArray(msg) ? msg : [msg]) : msg, "message", cache);
             this.RunNextBlock("action", cache);
-        });
+        })
+        .catch(() => this.RunNextBlock("action2", cache));
     }
 }
