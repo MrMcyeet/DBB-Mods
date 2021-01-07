@@ -97,7 +97,7 @@ module.exports = {
                 63: "Server (text+voice)Channel Count [Number]",
                 64: "Server Text Channel Count [Number]",
                 65: "Server Voice Channel Count [Number]",
-                66: "Server Categroy Count [Number]"
+                66: "Server Category Count [Number]"
             }
         }
     ],
