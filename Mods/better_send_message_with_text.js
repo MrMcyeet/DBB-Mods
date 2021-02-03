@@ -91,6 +91,12 @@ module.exports = {
             "name": "Message",
             "description": "Type: Object, List\n\nDescription: The message obtained. If \"Split Message\" is enabled, this will return a list containing all message objects instead of a single one.",
             "types": ["object", "list"]
+        },
+        {
+            "id": "errmsg",
+            "name": "Error Message",
+            "description": "Type: Text\n\nDescription: The error message if there is a problem.",
+            "types": ["text"]
         }
     ],
 
@@ -117,6 +123,9 @@ module.exports = {
             this.StoreOutputValue(split_message ? (Array.isArray(msg) ? msg : [msg]) : msg, "message", cache);
             this.RunNextBlock("action", cache);
         })
-        .catch(() => this.RunNextBlock("action2", cache));
+        .catch((e) => {
+            this.RunNextBlock("action2", cache); 
+            this.StoreOutputValue("errmsg", e.stack, cache);
+        });
     }
 }

@@ -140,7 +140,7 @@ module.exports = {
         this.RunNextBlock("swo2", cache);
                 break;
             case case3:
-                input = casse3;
+                input = case3;
         this.RunNextBlock("swo3", cache);
                 break;
             case case4:
